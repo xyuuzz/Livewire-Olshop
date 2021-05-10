@@ -15,13 +15,13 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{route("home")}}" >
-                          Home
+                            Home
                         </a>
                     </li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Daftar Liga
+                            Daftar Liga
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{route("product")}}">Semua Liga</a>
@@ -30,7 +30,13 @@
                                 <a class="dropdown-item" href="{{route("liga_product", ["liga" => $item_liga->nama])}}">{{$item_liga->nama}}</a>
                             @endforeach
                         </div>
-                      </li>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route("history")}}" >
+                        History Pesanan
+                        </a>
+                    </li>
 
                 </ul>
 

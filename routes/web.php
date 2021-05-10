@@ -18,10 +18,13 @@ Auth::routes();
 
 Route::get('/', Home::class)->name('home');
 
-
 Route::get("/product", ProductIndex::class)->name("product");
 Route::get("/product/detail/{product:nama}", ProductDetail::class)->name("product_detail");
 Route::get("/liga/product/{liga:nama}", LigaProduct::class)->name("liga_product");
-Route::get("/keranjang", Keranjang::class)->name("keranjang");
-Route::get("/checkout-jersey", Checkout::class)->name("checkout");
-Route::get("/order-history", History::class)->name("history");
+
+Route::middleware("auth")->group(function() {
+    Route::get("/keranjang", Keranjang::class)->name("keranjang");
+    Route::get("/checkout-jersey", Checkout::class)->name("checkout");
+    Route::get("/order-history", History::class)->name("history");
+});
+

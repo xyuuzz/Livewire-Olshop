@@ -50,7 +50,7 @@
                 <input type="text" class="mt-2 form-control" value="{{ Auth::user()->name }}" disabled>
 
                 <label for="no_hp">No Handphone</label>
-                <input wire:model='no_hp' id="no_hp" type="text" class="mt-2 form-control @error('no_hp') is-invalid @enderror" value="{{ old('no_hp') }}" name="no_hp">
+                <input wire:model='no_hp' id="no_hp" type="text" class="mt-2 form-control @error('no_hp') is-invalid @enderror" value="{{ old('no_hp')}}" name="no_hp">
                 @error('no_hp')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -58,7 +58,12 @@
                 @enderror
 
                 <label for="alamat">Alamat</label>
-                <textarea value="{{ old('nama') }}" wire:model='alamat' name="alamat" id="alamat" class="form-control @error('nama') is-invalid @enderror"></textarea>
+                <textarea value="{{ old('alamat')}}" wire:model='alamat' name="alamat" id="alamat" class="form-control @error('alamat') is-invalid @enderror"></textarea>
+                @error('alamat')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
 
                 <button type="submit" class="btn btn-sm btn-outline-success float-right mt-2">Pesan Sekarang</button>
             </form>

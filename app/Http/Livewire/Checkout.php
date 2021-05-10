@@ -11,7 +11,8 @@ class Checkout extends Component
 
     public function render()
     {
-        if(!Auth::check()) {return redirect(route("login"));}
+        $this->no_hp = Auth::user()?->no_hp;
+        $this->alamat = Auth::user()?->alamat;
 
         $pesanan = Auth::user()->order->where("status", 0)->first();
         return view('livewire.checkout', compact('pesanan'));
@@ -20,14 +21,17 @@ class Checkout extends Component
     public function checkout()
     {
         $this->validate([
-            "no_hp" => "required|numeric|min:10",
+            "no_hp" => "required|numeric",
             "alamat" => "required|string",
         ]);
 
-        Auth::user()->order->where("status", 0)->first()->user->update([
-            "no_hp" => $this->no_hp,
-            "alamat" => $this->alamat
-        ]);
+        if(!Auth::user()->alamat){
+            Auth::user()->update([
+                "no_hp" => $this->no_hp,
+                "alamat" => $this->alamat
+            ]);
+        }
+
         // update field status menjadi 1 (sudah checkout)
         Auth::user()->order()->where("status", 0)->update([
             "status" => 1

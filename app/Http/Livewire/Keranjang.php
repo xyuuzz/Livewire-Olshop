@@ -12,7 +12,7 @@ class Keranjang extends Component
 
     public function render()
     {
-        $this->pesanan = Auth::user()->order?->where("status", 0)?->first();
+        $this->pesanan = Auth::user()?->order?->where("status", 0)?->first();
         $this->pesanan_detail = $this->pesanan?->order_detail()->latest()->get();
 
         return view('livewire.keranjang', [
