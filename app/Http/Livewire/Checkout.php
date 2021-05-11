@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Checkout extends Component
 {
+    // model livewire
     public $no_hp, $alamat;
 
     public function render()
@@ -25,6 +26,7 @@ class Checkout extends Component
             "alamat" => "required|string",
         ]);
 
+        // jika field alamat milik user null, maka update field alamat + no_hp dengan yang diisi di form
         if(!Auth::user()->alamat){
             Auth::user()->update([
                 "no_hp" => $this->no_hp,

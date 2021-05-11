@@ -38,7 +38,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($pesanan_detail as $detail)
+                        @forelse ($order_detail as $detail)
                         <tr>
                             <th>{{$no}}</th>
                             <th>
@@ -62,20 +62,20 @@
                             </tr>
                         @endforelse
 
-                        @if(!empty($pesanan_detail))
+                        @if(!empty($order_detail))
                             <tr>
                                 <td colspan="6" align="right">Total Harga : </td>
-                                <td align="right">Rp. {{number_format($pesanan->total_harga)}}</td>
+                                <td align="right">Rp. {{number_format($order->total_harga)}}</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td colspan="6" align="right">Kode Unik : </td>
-                                <td align="right">Rp. {{number_format($pesanan->kode_unik)}}</td>
+                                <td align="right">Rp. {{number_format($order->kode_unik)}}</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td colspan="6" align="right">Total Harga Yang Harus Dibayar: </td>
-                                <td align="right">Rp. {{number_format($pesanan->total_harga + $pesanan->kode_unik)}}</td>
+                                <td align="right">Rp. {{number_format($order->total_harga + $order->kode_unik)}}</td>
                                 <td></td>
                             </tr>
                             <tr>

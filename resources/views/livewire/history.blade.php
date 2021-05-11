@@ -46,7 +46,7 @@
                                         <ul class="list-group col-lg-8">
                                             @foreach ($item_order->order_detail as $order_detail)
                                                 <ol class="list-group-item list-group-item-info text-bold">
-                                                    {{$order_detail->product->nama}} x{{$item_order->order_detail()->count()}}
+                                                    {{$order_detail->product->nama}} x{{$order_detail->jumlah_pesanan}}
                                                     <span class="float-md-right d-sm-block">
                                                         Rp.
                                                         {{number_format($order_detail->product->harga)}}

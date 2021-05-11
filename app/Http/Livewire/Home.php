@@ -11,17 +11,14 @@ class Home extends Component
 
     public function render()
     {
+        // mengambil 6 produk
         $this->product = Product::take(6)->get();
+        // mengambil semua liga
         $liga = Liga::all();
+
         return view('livewire.home', [
             "product" => $this->product,
             "liga" => $liga
         ]);
-    }
-
-    public function ligaButton($id)
-    {
-        $product = Product::where("liga_id", $id)->take(6)->get();
-        $this->emit("LigaProduct", $product);
     }
 }

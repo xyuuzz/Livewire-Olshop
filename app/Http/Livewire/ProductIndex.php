@@ -31,8 +31,7 @@ class ProductIndex extends Component
             $product = Product::where("nama", "like", "%{$this->search}%")->paginate(5);
         }
 
-        $route = "Semua Produk";
-        return view('livewire.product-index', compact('product', "route"));
+        return view('livewire.product-index', compact('product'));
     }
 
 }

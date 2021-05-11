@@ -16,6 +16,7 @@ class LigaProduct extends Component
 
     private $product;
 
+    // fungsi mount ini digunakan untuk menerima data yang dikimkan oleh route
     public function mount(Liga $liga)
     {
         $this->product = $liga->product();

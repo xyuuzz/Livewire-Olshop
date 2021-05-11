@@ -16,7 +16,7 @@ class Navbar extends Component
 
     public function mount()
     {
-        // menggunakan operator null, jika salah satu object bernilai null, maka nilai variabel tsb adalah null
+        // menggunakan operator nullsafe, jika salah satu object bernilai null, maka nilai variabel tsb adalah null
         if($pesanan = Auth::user()?->order?->where("status", 0)->first()?->order_detail?->count()) {
             $this->jumlah = $pesanan;
         }
@@ -30,12 +30,12 @@ class Navbar extends Component
         ]);
     }
 
-
     public function updateKeranjang()
     {
+        // meng-update isi keranjang dengan menghitung isi dari table order_detail
         if($pesanan = Auth::user()?->order?->where("status", 0)->first()?->order_detail?->count()) {
             $this->jumlah = $pesanan;
-        } else { $this->jumlah = 0; }
+        } else { $this->jumlah = 0; }// jika kondisi diatas bernilai 0, maka
     }
 
 }

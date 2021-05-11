@@ -23,11 +23,14 @@ class ProductDetail extends Component
         return view('livewire.product-detail', compact("product", "route"));
     }
 
+    // fungsi ini dijalankan ketika user mengeklik checkbox nameset
     public function nameset()
     {
+        // tambah property static 1
         self::$nilai++;
-        $this->nameset = true;
+        // $this->nameset = true;
 
+        // jika property statis nilai bisa dibagi 0 maka
         if(self::$nilai % 2 === 0) {
             $this->nameset = 1;
         }
@@ -35,7 +38,7 @@ class ProductDetail extends Component
 
     public function masukan_keranjang()
     {
-        // redirect jika user belum login
+        // redirect jika user belum login, redirect ke hal login
         if(!Auth::check()) {
             return redirect()->route("login");
         }
@@ -63,7 +66,7 @@ class ProductDetail extends Component
         }
 
         if(!count($user_order = Auth::user()->order->where("status", 0))) {
-            // buat data di table order jika user tidak punya riwayat order
+            // buat data di table order jika user tidak punya riwayat order yang status nya 0 atau belum dicheckout
             $user_order = Auth::user()->order()->create([
                 "kode_pesanan" => uniqid() . Auth::id() . $this->product->id,
                 "status" => 0,
@@ -77,8 +80,7 @@ class ProductDetail extends Component
             ]);
         }
 
-
-        // buat data di table order detail
+        // buat data di table order detail dengan relasi field order yang status nya 0
         $user_order->where("status", 0)->first()->order_detail()->create([
             "product_id" => $this->product->id,
             "jumlah_pesanan" => $this->jumlah_pesanan,

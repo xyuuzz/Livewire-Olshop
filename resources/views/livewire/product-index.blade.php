@@ -4,7 +4,7 @@
             <nav aria-label="breadcrumb ml-4 mr-4">
                 <ol class="breadcrumb bg-light">
                   <li class="breadcrumb-item"><a class="text-dark" href="{{route("home")}} " style="text-decoration:none;">Home</a></li>
-                  <li class="breadcrumb-item" aria-current="page">{{$route}}</li>
+                  <li class="breadcrumb-item" aria-current="page">Daftar Jersey</li>
                 </ol>
             </nav>
         </div>
